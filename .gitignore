@@ -1,3 +1,9 @@
+haters/
+
+*.sketch
+*.fig
+course-layout.md
+
 # Logs
 logs
 *.log
