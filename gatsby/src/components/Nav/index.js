@@ -7,10 +7,14 @@ const Nav = () => (
   <StyledNav>
     <ul>
       <li>
-        <Link to="/">Hot Now</Link>
+        <Link className="link" to="/">
+          Hot Now
+        </Link>
       </li>
       <li>
-        <Link to="/pizzas">Pizza Menu</Link>
+        <Link className="link" to="/pizzas">
+          Pizza Menu
+        </Link>
       </li>
       <li>
         <Link to="/">
@@ -18,10 +22,14 @@ const Nav = () => (
         </Link>
       </li>
       <li>
-        <Link to="/orders">Order Ahead</Link>
+        <Link className="link" to="/orders">
+          Order Ahead
+        </Link>
       </li>
       <li>
-        <Link to="/slicemasters">Slicemasters</Link>
+        <Link className="link" to="/slicemasters">
+          Slicemasters
+        </Link>
       </li>
     </ul>
   </StyledNav>
