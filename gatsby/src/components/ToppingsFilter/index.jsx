@@ -7,7 +7,6 @@ const countPizzasInToppings = (pizzas) => {
     .map((pizza) => pizza.toppings)
     .flat()
     .reduce((accum, topping) => {
-      console.log('TOPPING: ', topping);
       if (!accum[topping.id]) {
         accum[topping.id] = {
           id: topping.id,
@@ -57,7 +56,7 @@ const ToppingsFilter = () => {
   return (
     <StyledToppingsFilter>
       {toppingsWithCounts.map((topping) => (
-        <Link test={topping} to={`/topping/${topping.slug}`}>
+        <Link to={`/topping/${topping.slug}`} key={topping.name}>
           <span className="name">{topping.name}</span>
           <span className="count">{topping.count}</span>
         </Link>
