@@ -5,7 +5,7 @@ import SinglePizza from '../SinglePizza';
 const PizzaList = ({ pizzas }) => (
   <PizzaGrid>
     {pizzas.map((pizza) => (
-      <SinglePizza pizza={pizza} />
+      <SinglePizza key={pizza.id} pizza={pizza} />
     ))}
   </PizzaGrid>
 );
