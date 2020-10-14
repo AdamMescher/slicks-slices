@@ -13,6 +13,15 @@ export default {
       description: 'What is the name of the topping?',
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 100,
+      },
+    },
+    {
       name: 'vegetarian',
       title: 'vegetarian',
       type: 'boolean',
@@ -28,7 +37,7 @@ export default {
       vegetarian: 'vegetarian',
     },
     prepare: ({ name, vegetarian }) => ({
-      title: `${name} ${vegetarian ? '🌱' : '🥩'}`,
+      title: `${name} ${vegetarian ? '🌱' : ''}`,
     }),
   },
 };
