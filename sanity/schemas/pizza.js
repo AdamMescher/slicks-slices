@@ -49,12 +49,25 @@ export default {
     select: {
       title: 'name',
       media: 'image',
-      toppings: 'toppoings',
+      topping0: 'toppings.0.name',
+      toppingIsVeg0: 'toppings.0.vegetarian',
+      topping1: 'toppings.1.name',
+      toppingIsVeg1: 'toppings.1.vegetarian',
+      topping2: 'toppings.2.name',
+      toppingIsVeg2: 'toppings.2.vegetarian',
+      topping3: 'toppings.3.name',
+      toppingIsVeg3: 'toppings.3.vegetarian',
     },
     prepare: ({ title, media, ...toppings }) => {
-      const tops = Object.values(toppings).filter(Boolean);
+      console.log('THIS IS THE TITLE: ', title);
+      const tops = Object.values(toppings).filter(
+        (top, i) => top && i % 2 === 0
+      );
+      const allToppingsAreVeg = Object.values(toppings)
+        .filter((ele, i) => i % 2 !== 0)
+        .every(Boolean);
       return {
-        title,
+        title: allToppingsAreVeg ? `${title} 🌱` : `${title}`,
         media,
         subtitle: tops.join(', '),
       };
