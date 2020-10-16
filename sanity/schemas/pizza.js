@@ -59,7 +59,6 @@ export default {
       toppingIsVeg3: 'toppings.3.vegetarian',
     },
     prepare: ({ title, media, ...toppings }) => {
-      console.log('THIS IS THE TITLE: ', title);
       const tops = Object.values(toppings).filter(
         (top, i) => top && i % 2 === 0
       );

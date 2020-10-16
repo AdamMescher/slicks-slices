@@ -45,6 +45,10 @@ const ToppingsFilter = () => {
 
   return (
     <StyledToppingsFilter>
+      <Link to="/pizzas">
+        <span className="name">All</span>
+        <span className="count">{pizzas.nodes.length}</span>
+      </Link>
       {toppingsWithCounts.map((topping) => (
         <Link to={`/topping/${topping.slug}`} key={topping.name}>
           <span className="name">{topping.name}</span>

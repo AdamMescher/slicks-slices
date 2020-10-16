@@ -21,8 +21,8 @@ const StyledToppingsFilter = styled.div`
       padding: 2px 5px;
     }
 
-    .active {
-      background: var(--yelow);
+    &[aria-current='page'] {
+      background: var(--yellow);
     }
   }
 `;
