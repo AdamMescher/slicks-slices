@@ -1,8 +1,24 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import styled from 'styled-components';
 
-const SinglePizzaPage = () => (
-  <p>all my single pizzas 🍕 💍 now put your dough up.</p>
+const PizzaGrid = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+`;
+
+const SinglePizzaPage = ({ data: { pizza } }) => (
+  <PizzaGrid>
+    <Img fluid={pizza.image.asset.fluid} alt={pizza.name} />
+    <h2 className="mark">{pizza.name}</h2>
+    <ul>
+      {pizza.toppings.map((topping) => (
+        <li key={topping.id}>{topping.name}</li>
+      ))}
+    </ul>
+  </PizzaGrid>
 );
 
 export default SinglePizzaPage;
@@ -14,7 +30,7 @@ export const query = graphql`
       id
       image {
         asset {
-          GatsbySanityImageFluid(maxWidth: 800) {
+          fluid(maxWidth: 800) {
             ...GatsbySanityImageFluid
           }
         }

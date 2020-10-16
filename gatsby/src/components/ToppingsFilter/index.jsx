@@ -25,18 +25,8 @@ const countPizzasInToppings = (pizzas) => {
 };
 
 const ToppingsFilter = () => {
-  const { toppings, pizzas } = useStaticQuery(graphql`
+  const { pizzas } = useStaticQuery(graphql`
     query {
-      toppings: allSanityTopping {
-        nodes {
-          id
-          name
-          vegetarian
-          slug {
-            current
-          }
-        }
-      }
       pizzas: allSanityPizza {
         nodes {
           toppings {
