@@ -51,7 +51,7 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
     });
   });
 };
-const turnSlicemastersIntoPages = async (params) => {};
+// const turnSlicemastersIntoPages = async (params) => {};
 
 async function fetchBeersAndTurnIntoNodes({
   actions,
