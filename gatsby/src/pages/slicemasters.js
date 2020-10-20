@@ -5,6 +5,7 @@ import SlicemasterList from '../components/SlicemastersList';
 
 const SlicemastersPage = ({ data }) => (
   <>
+    <p>{process.env.GATSBY_PAGE_SIZE}</p>
     <SlicemasterList slicemasters={data.slicemasters.nodes} />
   </>
 );
