@@ -51,7 +51,6 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
     });
   });
 };
-// const turnSlicemastersIntoPages = async (params) => {};
 
 async function fetchBeersAndTurnIntoNodes({
   actions,
@@ -76,8 +75,121 @@ async function fetchBeersAndTurnIntoNodes({
   }
 }
 
+async function fetchWinesAndTurnIntoNodes({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) {
+  const base = 'https://sampleapis.com/wines/api';
+  const [
+    redsResponse,
+    whitesResponse,
+    sparklingResposne,
+    roseResposne,
+    desertResposne,
+    portResposne,
+  ] = [
+    await fetch(`${base}/reds`),
+    await fetch(`${base}/whites`),
+    await fetch(`${base}/sparkling`),
+    await fetch(`${base}/rose`),
+    await fetch(`${base}/desert`),
+    await fetch(`${base}/port`),
+  ];
+  const [reds, whites, sparkling, rose, desert, port] = [
+    await redsResponse.json(),
+    await whitesResponse.json(),
+    await sparklingResposne.json(),
+    await roseResposne.json(),
+    await desertResposne.json(),
+    await portResposne.json(),
+  ];
+
+  reds.forEach((red) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${red.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'RedWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(red),
+      },
+    };
+    actions.createNode({ ...red, ...nodeMeta });
+  });
+  whites.forEach((white) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${white.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'WhiteWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(white),
+      },
+    };
+    actions.createNode({ ...white, ...nodeMeta });
+  });
+  sparkling.forEach((sw) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${sw.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'SparklingWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(sw),
+      },
+    };
+    actions.createNode({ ...sw, ...nodeMeta });
+  });
+  rose.forEach((rw) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${rw.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'RoseWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(rw),
+      },
+    };
+    actions.createNode({ ...rw, ...nodeMeta });
+  });
+  desert.forEach((dw) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${dw.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'DesertWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(dw),
+      },
+    };
+    actions.createNode({ ...dw, ...nodeMeta });
+  });
+  port.forEach((pw) => {
+    const nodeMeta = {
+      id: createNodeId(`wine-${pw.wine}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'PortWine',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(pw),
+      },
+    };
+    actions.createNode({ ...pw, ...nodeMeta });
+  });
+}
+
 export async function sourceNodes(params) {
-  await Promise.all([fetchBeersAndTurnIntoNodes(params)]);
+  await Promise.all([
+    fetchBeersAndTurnIntoNodes(params),
+    fetchWinesAndTurnIntoNodes(params),
+  ]);
 }
 
 export async function createPages(params) {
