@@ -86,22 +86,19 @@ async function fetchWinesAndTurnIntoNodes({
     whitesResponse,
     sparklingResposne,
     roseResposne,
-    desertResposne,
     portResposne,
   ] = [
     await fetch(`${base}/reds`),
     await fetch(`${base}/whites`),
     await fetch(`${base}/sparkling`),
     await fetch(`${base}/rose`),
-    await fetch(`${base}/desert`),
     await fetch(`${base}/port`),
   ];
-  const [reds, whites, sparkling, rose, desert, port] = [
+  const [reds, whites, sparkling, rose, port] = [
     await redsResponse.json(),
     await whitesResponse.json(),
     await sparklingResposne.json(),
     await roseResposne.json(),
-    await desertResposne.json(),
     await portResposne.json(),
   ];
 
@@ -156,19 +153,6 @@ async function fetchWinesAndTurnIntoNodes({
       },
     };
     actions.createNode({ ...rw, ...nodeMeta });
-  });
-  desert.forEach((dw) => {
-    const nodeMeta = {
-      id: createNodeId(`wine-${dw.wine}`),
-      parent: null,
-      children: [],
-      internal: {
-        type: 'DesertWine',
-        mediaType: 'application/json',
-        contentDigest: createContentDigest(dw),
-      },
-    };
-    actions.createNode({ ...dw, ...nodeMeta });
   });
   port.forEach((pw) => {
     const nodeMeta = {
