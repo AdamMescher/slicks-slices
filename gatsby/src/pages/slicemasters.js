@@ -2,10 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import SlicemasterList from '../components/SlicemastersList';
 import Pagination from '../components/Pagination';
-// import SingleSlicemaster from '../components/SingleSlicemaster';
+import SEO from '../components/SEO';
 
 const SlicemastersPage = ({ data, pageContext }) => (
   <>
+    <SEO title={`Slicemasters - Page ${pageContext.currentPage || 1}`} />
     <Pagination
       pageSize={
         pageContext.pageSize || process.env.GATSBY_SLICEMASTER_PAGE_SIZE
