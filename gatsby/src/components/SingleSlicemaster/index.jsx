@@ -5,7 +5,7 @@ import StyledSingleSlicemaster from './styled';
 
 const SingleSlicemaster = ({ slicemaster }) => (
   <StyledSingleSlicemaster>
-    <Link to={`/slicemaster/${slicemaster.slug.current}`}>
+    <Link to={`/slicemasters/${slicemaster.slug.current}`}>
       <h2 className="mark">
         <span className="slicemaster-name">{slicemaster.name}</span>
       </h2>

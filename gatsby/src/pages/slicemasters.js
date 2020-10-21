@@ -7,14 +7,14 @@ import Pagination from '../components/Pagination';
 const SlicemastersPage = ({ data, pageContext }) => (
   <>
     <Pagination
-      pageSize={pageContext.pageSize || process.env.GATSBY_PAGE_SIZE}
+      pageSize={
+        pageContext.pageSize || process.env.GATSBY_SLICEMASTER_PAGE_SIZE
+      }
       totalCount={data.slicemasters.totalCount}
       currentPage={pageContext.currentPage || 1}
       skip={pageContext.skip}
       base="/slicemasters"
-    >
-      {}
-    </Pagination>
+    />
     <SlicemasterList slicemasters={data.slicemasters.nodes} />
   </>
 );

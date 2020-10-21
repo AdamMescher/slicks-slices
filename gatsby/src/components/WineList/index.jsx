@@ -1,6 +1,7 @@
 import React from 'react';
 import StyledWineList from './styled';
 import SingleWine from '../SingleWine';
+import Pagination from '../Pagination';
 
 const WineList = ({ wines }) => {
   const types = Object.keys(wines);

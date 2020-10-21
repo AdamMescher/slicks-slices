@@ -67,7 +67,7 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
       }
     }
   `);
-  const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+  const pageSize = parseInt(process.env.GATSBY_SLICEMASTER_PAGE_SIZE);
   const pageCount = Math.ceil(data.slicemasters.totalCount / pageSize);
   Array.from({ length: pageCount }).forEach((ele, i) => {
     actions.createPage({
@@ -77,6 +77,17 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
         skip: i * pageSize,
         currentPage: i + 1,
         pageSize,
+      },
+    });
+  });
+  const slicemasterTemplate = path.resolve('./src/templates/Slicemaster.js');
+  data.slicemasters.nodes.forEach((person) => {
+    actions.createPage({
+      path: `slicemasters/${person.slug.current}`,
+      component: slicemasterTemplate,
+      context: {
+        name: person.name,
+        slug: person.slug.current,
       },
     });
   });
@@ -196,6 +207,25 @@ async function fetchWinesAndTurnIntoNodes({
       },
     };
     actions.createNode({ ...pw, ...nodeMeta });
+  });
+  const allWines =
+    reds.totalCount +
+    whites.totalCount +
+    sparkling.totalCount +
+    rose.totalCount +
+    port.totalCount;
+  const pageSize = parseInt(process.env.GATSBY_WINE_PAGE_SIZE);
+  const pageCount = Math.ceil(allWines / pageSize);
+  Array.from({ length: pageCount }).forEach((ele, i) => {
+    actions.createPage({
+      path: `wines/${i + 1}`,
+      component: path.resolve('./src/pages/wines.js'),
+      context: {
+        skip: i * pageSize,
+        currentPage: i + 1,
+        pageSize,
+      },
+    });
   });
 }
 
