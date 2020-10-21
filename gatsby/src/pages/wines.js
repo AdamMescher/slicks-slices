@@ -25,7 +25,7 @@ const WinePage = ({
         skip={pageContext.skip}
         base="/wines"
       />
-      <WineList wines={wines} />
+      {/* <WineList wines={wines} /> */}
     </StyledWinePage>
   );
 };

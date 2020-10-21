@@ -1,13 +1,9 @@
 import React from 'react';
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event';
+import formatMoney from '../../../gatsby/src/utils/formatMoney';
 
 const createPatchFrom = (value) =>
   PatchEvent.from(value === '' ? unset() : set(Number(value)));
-
-const formatMoney = Intl.NumberFormat('en-us', {
-  style: 'currency',
-  currency: 'USD',
-}).format;
 
 const PriceInput = ({ type, value, onChange, inputComponent }) => (
   <div>
