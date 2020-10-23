@@ -8,7 +8,7 @@ const createPatchFrom = (value) =>
 const PriceInput = ({ type, value, onChange, inputComponent }) => (
   <div>
     <h2>
-      {type.title} - {value ? formatMoney(value / 100) : ''}
+      {type.title} - {value ? formatMoney(value) : ''}
     </h2>
     <p>{type.description}</p>
     <input
