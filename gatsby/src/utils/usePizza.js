@@ -6,9 +6,7 @@ const usePizza = ({ pizzas, inputs }) => {
     setOrder([...order, orderedPizza]);
   };
   const removeFromOrder = (index) => {
-    console.log('FIRED!');
     setOrder([...order.slice(0, index), ...order.slice(index + 1)]);
-    console.log(index);
   };
   return {
     order,

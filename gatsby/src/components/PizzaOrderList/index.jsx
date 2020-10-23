@@ -4,7 +4,6 @@ import OrderItem from '../OrderItem';
 
 const PizzaOrderList = ({ order, pizzas, removeFromOrder }) =>
   order.map((singleOrder, index) => {
-    console.log('idx: ', index);
     const pizza = pizzas.find((za) => za.id === singleOrder.id);
     return (
       <OrderItem
