@@ -2,6 +2,7 @@ import React from 'react';
 import StyledOrderForm from './styled';
 import MenuItemList from '../MenuItemList';
 import PizzaOrder from '../PizzaOrder';
+import PizzaOrderTotal from '../PIzzaOrderTotal';
 import useForm from '../../utils/useForm';
 import usePizza from '../../utils/usePizza';
 
@@ -46,6 +47,9 @@ const OrderForm = ({ pizzas, sizes }) => {
           pizzas={pizzas}
           removeFromOrder={removeFromOrder}
         />
+      </fieldset>
+      <fieldset className="total">
+        <PizzaOrderTotal order={order} pizzas={pizzas} />
       </fieldset>
     </StyledOrderForm>
   );
